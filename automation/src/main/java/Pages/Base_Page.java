@@ -6,41 +6,47 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.Alert;
-
-
 
 import java.time.Duration;
 
 public class Base_Page {
-    protected WebDriver driver; // Changed to protected
+    protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public static long Wait = 60;
+    public static final long WAIT_TIME = 60;
 
     public Base_Page(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(Wait)); // Updated for Selenium 4
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIME));
     }
 
+    private void waitForElement(By element) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+    }
 
     public void waitTimeToBeClickable(By element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void waitTimeToBeVisible(By element) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-    }
-
     public void sendKeys(By element, String value) {
-        waitTimeToBeVisible(element);
+        waitForElement(element);
         driver.findElement(element).sendKeys(value);
     }
 
     public void clickOnElement(By element) {
-        waitTimeToBeVisible(element);
+        waitForElement(element);
         waitTimeToBeClickable(element);
         driver.findElement(element).click();
+    }
+
+    public String getTextSafely(By locator) {
+        try {
+            waitForElement(locator);
+            return driver.findElement(locator).getText().trim();
+        } catch (Exception e) {
+            System.out.println("Element not found: " + locator);
+            return null;
+        }
     }
 
     public String getCurrentURL() {
@@ -53,27 +59,28 @@ public class Base_Page {
     }
 
     public void selectFromDropDownList(By element, String option) {
-        waitTimeToBeVisible(element);
+        waitForElement(element);
         Select options = new Select(driver.findElement(element));
         options.selectByVisibleText(option);
     }
 
     public boolean isElementVisible(By locator) {
         try {
-            return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)) != null;
+            waitForElement(locator);
+            return driver.findElement(locator).isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
-    
+
     public boolean isElementInvisible(By locator) {
         try {
-            return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            return true;
         } catch (Exception e) {
-            return false; // لو حصل exception يعتبره لسه ظاهر
+            return false;
         }
     }
-
 
     public boolean isTextEqual(By locator, String expectedText) {
         try {

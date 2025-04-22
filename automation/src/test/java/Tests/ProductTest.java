@@ -28,7 +28,7 @@ public class ProductTest extends Test_Base {
         productPage.clickAddToCartBtn();
         Assert.assertTrue(productPage.isItemAddedToCart(), "Item should be added");
 
-        productPage.clickOnRemoveCart();
+        productPage.clickRemoveFromCartBtn();
         Assert.assertTrue(productPage.isItemRemovedFromCart(), "Item should be removed");
     }
 }

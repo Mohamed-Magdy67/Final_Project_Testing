@@ -43,7 +43,7 @@ public class CartHelper {
         addToCartPage.clickRemoveBtn();
         Assert.assertTrue(productPage.isItemRemovedFromCart(), 
             "FAIL: Cart badge still shows items after removal");
-        Assert.assertFalse(addToCartPage.isItemPresentInCart(), 
+        Assert.assertTrue(addToCartPage.isItemNotPresentInCart(), 
             "FAIL: " + lastItemName + " still appears in cart");
         System.out.println("PASS: " + lastItemName + " successfully removed from cart");
         

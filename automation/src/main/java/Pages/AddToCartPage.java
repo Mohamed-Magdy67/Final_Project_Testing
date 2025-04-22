@@ -41,7 +41,10 @@ public class AddToCartPage extends Base_Page {
     }
 
     public boolean isItemPresentInCart() {
-    	System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return isElementVisible(itemNameInCart);
+    }
+    
+    public boolean isItemNotPresentInCart() {
+        return isElementInvisible(itemNameInCart);
     }
 }

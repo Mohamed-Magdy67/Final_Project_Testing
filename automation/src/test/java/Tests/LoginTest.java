@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import Pages.LoginPage;
 
-public class LoginTest extends Test_Base{
+public class LoginTest extends TestBase {
     LoginPage loginPage ;
 
     @BeforeMethod

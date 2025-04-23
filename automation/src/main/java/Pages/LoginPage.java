@@ -3,7 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends Base_Page{
+public class LoginPage extends BasePage {
 
     By username = By.xpath("//input[@id=\"user-name\"]");
     By password = By.xpath("//input[@id=\"password\"]");

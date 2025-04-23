@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginHelper {
     private final LoginPage loginPage;
-    private final WebDriver driver;  // Store driver as a field
+    private final WebDriver driver;
 
     public LoginHelper(WebDriver driver) {
-        this.driver = driver;  // Initialize the driver
+        this.driver = driver;
         this.loginPage = new LoginPage(driver);
     }
 
@@ -17,13 +17,11 @@ public class LoginHelper {
         loginPage.fillUserName("standard_user");
         loginPage.fillPassword("secret_sauce");
         loginPage.clickLoginButton();
-        
-        // Handle alert if present
+
         try {
-            Alert alert = driver.switchTo().alert();  // Now using the stored driver
+            Alert alert = driver.switchTo().alert();
             alert.accept();
         } catch (Exception e) {
-            // Alert didn't appear
         }
     }
 }

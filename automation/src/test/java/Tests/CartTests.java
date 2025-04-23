@@ -5,7 +5,7 @@ import Helper.LoginHelper;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CartTests extends Test_Base {
+public class CartTests extends TestBase {
     private CartHelper cartHelper;
     private LoginHelper loginHelper;
 
@@ -17,7 +17,7 @@ public class CartTests extends Test_Base {
     }
 
     @Test
-    public void verifyItemAdditionAndCartNavigation() {
+    public void verifyItemAdditionAndCartAndContinueShopping() {
         cartHelper.addFirstItemAndVerify();
     }
 
@@ -26,4 +26,16 @@ public class CartTests extends Test_Base {
         cartHelper.addFirstItemAndVerify();
         cartHelper.removeFirstItemAndVerify();
     }
+    
+	@Test
+	public void verifyInvalidCheckoutAfterItemRemoval() {
+        cartHelper.addFirstItemAndVerify();
+        cartHelper.removeFirstItemAndVerify();
+	}
+	@Test 
+	public void verifyContinueShoppingAfterItemRemoval() {
+        cartHelper.addFirstItemAndVerify();
+        cartHelper.removeFirstItemAndVerify();
+	}
+	
 }

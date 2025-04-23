@@ -5,9 +5,9 @@
     <classes>
       <class name="Tests.CartTests">
         <methods>
-          <include name="openBrowser"/>
           <include name="setUpTest"/>
-          <include name="verifyItemRemovalFlow"/>
+          <include name="verifyInvalidCheckoutAfterItemRemoval"/>
+          <include name="openBrowser"/>
           <include name="closeBrowser"/>
         </methods>
       </class> <!-- Tests.CartTests -->

@@ -3,23 +3,19 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AddToCartPage extends Base_Page {
+public class AddToCartPage extends BasePage {
 
     public AddToCartPage(WebDriver driver) {
         super(driver);
     }
 
-    // Identify elements
     private By pageTitle = By.xpath("//div[@class='subheader' and text()='Your Cart']");
     private By cartItemQuantity = By.xpath("//div[@class='cart_quantity']");
     private By removeBtn = By.xpath("(//button[normalize-space()='REMOVE'])[1]");
     private By checkOutBtn = By.cssSelector(".btn_action.checkout_button");
     private By continueShoppingBtn = By.xpath("(//a[normalize-space()='Continue Shopping'])[1]");
     private By itemNameInCart = By.cssSelector(".inventory_item_name");
-   // public By shoppingCartBadge = By.cssSelector(".fa-layers-counter.shopping_cart_badge");
 
-
-    // Methods
     public boolean verifyCartPageLoaded() {
         return isElementVisible(pageTitle);
     }
@@ -43,7 +39,7 @@ public class AddToCartPage extends Base_Page {
     public boolean isItemPresentInCart() {
         return isElementVisible(itemNameInCart);
     }
-    
+
     public boolean isItemNotPresentInCart() {
         return isElementInvisible(itemNameInCart);
     }

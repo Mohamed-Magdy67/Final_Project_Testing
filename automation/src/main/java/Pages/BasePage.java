@@ -94,4 +94,13 @@ public class BasePage {
             return false;
         }
     }
+
+    public String getElementText(By locator) {
+        try {
+            return driver.findElement(locator).getText();
+        } catch (NotFoundException e) {
+            System.out.println("Not Found Element" + locator);
+            return null;
+        }
+    }
 }

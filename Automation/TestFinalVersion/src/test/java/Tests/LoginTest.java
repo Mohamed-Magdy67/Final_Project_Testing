@@ -23,6 +23,10 @@ public class LoginTest extends TestBase {
         loginPage.fillUserName("standard_user");
         loginPage.fillPassword("secret_sauce");
         loginPage.clickOnLoginButton();
+InventoryPage inventoryPage = new InventoryPage(driver);
+        Assert.assertTrue("Inventory page should be displayed", inventoryPage.isInventoryDisplayed());
+        Assert.assertEquals("https://www.saucedemo.com/v1/inventory.html", inventoryPage.getCurrentUrl());
+        
     }
 
     @Test

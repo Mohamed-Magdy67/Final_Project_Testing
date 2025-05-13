@@ -23,7 +23,6 @@ public class BasePage {
 
     private void waitForElement(By element) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIME));
 
     }
 
